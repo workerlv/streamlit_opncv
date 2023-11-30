@@ -3,6 +3,9 @@ import transformations.transformations_3x3.transformations_3x3 as transform3x3
 import streamlit as st
 import cv2
 
+# FIXME: change to true when uploading on GitHub
+online_streamlit = True
+
 st.set_page_config(
     page_title="OPENCV",
     layout="wide",
@@ -20,5 +23,8 @@ st.set_page_config(
 # )
 
 # if main_option == "Transformations":
-image = cv2.imread("scripts/alien.jpg")
+if online_streamlit:
+    image = cv2.imread("scripts/alien.jpg")
+else:
+    image = cv2.imread("alien.jpg")
 transform3x3.main(image)
