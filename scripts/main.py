@@ -5,7 +5,7 @@ import cv2
 
 st.set_page_config(
     page_title="OPENCV",
-    layout="wide", 
+    layout="wide",
 )
 
 # TODO: whene multiple categories added then add this
@@ -20,5 +20,5 @@ st.set_page_config(
 # )
 
 # if main_option == "Transformations":
-image = cv2.imread("alien.jpg")
+image = cv2.imread("scripts/alien.jpg")
 transform3x3.main(image)
