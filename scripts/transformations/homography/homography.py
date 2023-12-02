@@ -55,7 +55,7 @@ def main(image, room_image):
 
     with col_1:
         tx_pnts = st.slider("Top x points", 0, img_width, (10, img_width - 10))
-        bx_pnts = st.slider("Bot x points", 0, img_height, (10, img_width - 10))
+        bx_pnts = st.slider("Bot x points", 0, img_width, (10, img_width - 10))
 
     with col_2:
         ly_pnts = st.slider("Left y points", 0, img_height, (10, img_height - 10))
