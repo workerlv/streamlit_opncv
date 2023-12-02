@@ -1,4 +1,4 @@
-from . import transformation_utils as transform_utils
+from . import transformation_utils as TU
 import streamlit as st
 from PIL import Image
 import numpy as np
@@ -14,8 +14,8 @@ def main(image):
     uploaded_file = st.file_uploader("Choose your personal image")
 
     if uploaded_file is not None:
-        if transform_utils.is_valid_image(uploaded_file):
-            image = transform_utils.process_image(uploaded_file)
+        if TU.is_valid_image(uploaded_file):
+            image = TU.process_image(uploaded_file)
 
     st.divider()
     st.write("Resize image so it fits good on your screen")
@@ -23,7 +23,7 @@ def main(image):
     image_size_percent = st.slider("Image size in percents", 0, 100, 50)
     st.divider()
 
-    image_resized = transform_utils.resize_image(image, image_size_percent)
+    image_resized = TU.resize_image(image, image_size_percent)
     st.image(image_resized)
     st.divider()
 
@@ -50,7 +50,7 @@ def main(image):
     with scale_col_2:
         scale_y = st.slider("Scele Y", 1.0, 3.0, 1.4)
 
-    scaled_image = transform_utils.scaling_matrix(image_resized, scale_x, scale_y)
+    scaled_image = TU.scaling_matrix(image_resized, scale_x, scale_y)
     st.image(scaled_image)
 
     # ---------- Skew ----------
@@ -78,7 +78,7 @@ def main(image):
 
     skew = st.slider("Skew", 0, 50, 20)
 
-    skewed_image = transform_utils.skew_matrix(image_resized, skew)
+    skewed_image = TU.skew_matrix(image_resized, skew)
     st.image(skewed_image)
 
     # ---------- Translation ----------
@@ -108,7 +108,7 @@ def main(image):
     with translat_col_2:
         ty = st.slider("Translation Y (ty)", -max_height, max_height, 20)
 
-    translated_image = transform_utils.translation_matrix(image_resized, tx, ty)
+    translated_image = TU.translation_matrix(image_resized, tx, ty)
     st.image(translated_image)
 
     # ---------- Rotation ----------
@@ -131,13 +131,13 @@ def main(image):
 
     rotation = st.slider("Rotation angle (degrees)", -90, 90, 45)
 
-    rotated_image = transform_utils.rotation_matrix(image_resized, rotation)
+    rotated_image = TU.rotation_matrix(image_resized, rotation)
     st.image(rotated_image)
 
     # ---------- Combined matrix ----------
     st.divider()
 
-    st.title("Combined matrixes")
+    st.title("Combined matrices")
 
     code = """
        composite_matrix = np.dot(skewing_matrix, np.dot(scaling_matrix, np.dot(rotation_matrix, translation_matrix)))
@@ -172,7 +172,7 @@ def main(image):
     with skew_rot_col_2:
         rotationc = st.slider("Rotation angle combined (degrees)", -90, 90, 45)
 
-    combined_image = transform_utils.combined_matrix(
+    combined_image = TU.combined_matrix(
         image_resized, txc, tyc, rotationc, scalec_x, scalec_y, skewc
     )
 
