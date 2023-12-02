@@ -24,7 +24,8 @@ def main(image, room_image):
     st.divider()
     st.write("Resize image so it fits good on your screen")
 
-    image_size_percent = st.slider("Image size in percents", 0, 100, 10)
+    image_size_percent = st.slider("Foreground image size in percents", 0, 100, 10)
+    image_size_percent2 = st.slider("Background image size in percents", 0, 100, 10)
 
     col1, col2 = st.columns(2)
 
@@ -35,7 +36,7 @@ def main(image, room_image):
 
     with col2:
         st.write("Background image")
-        room_image_resized = HU.resize_image(room_image, image_size_percent)
+        room_image_resized = HU.resize_image(room_image, image_size_percent2)
         st.image(room_image_resized)
 
     st.divider()
