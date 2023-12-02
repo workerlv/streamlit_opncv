@@ -6,5 +6,5 @@ When using loccaly on computer change "online_streamlit = True" to False as ther
 You can preview project online - [opencv.streamlit.app](https://opencv.streamlit.app/)
 
 Currently available pages:
-⋅⋅* image transformations (3x3 matrices)
-⋅⋅* homography
+1. image transformations (3x3 matrices)
+2. homography
