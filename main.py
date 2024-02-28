@@ -4,8 +4,6 @@ import transformations.homography.homography as homography
 import streamlit as st
 import cv2
 
-# FIXME: change to true when uploading on GitHub
-online_streamlit = True
 
 st.set_page_config(
     page_title="OPENCV",
@@ -28,12 +26,8 @@ def main_page():
     st.write("Choose topic to explore")
 
 
-if online_streamlit:
-    image = cv2.imread("scripts/alien.jpg")
-    image_room = cv2.imread("scripts/room.jpg")
-else:
-    image = cv2.imread("alien.jpg")
-    image_room = cv2.imread("room.jpg")
+image = cv2.cvtColor(cv2.imread("example_images/alien.jpg"), cv2.COLOR_BGR2RGB)
+image_room = cv2.cvtColor(cv2.imread("example_images/room.jpg"), cv2.COLOR_BGR2RGB)
 
 if main_option == "Main page":
     main_page()
