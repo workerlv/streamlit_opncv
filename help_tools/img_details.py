@@ -51,7 +51,7 @@ def main(image):
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     img_data = collect_img_data(image)
-    st.write(img_data)
+
     col_a, col_b = st.columns(2)
 
     with col_a:
