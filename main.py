@@ -1,6 +1,7 @@
-# streamlit run scripts/main.py
-import transformations.transformations_3x3.transformations_3x3 as transform3x3
-import transformations.homography.homography as homography
+# streamlit run main.py
+from transformations.transformations_3x3 import transformations_3x3
+from transformations.homography import homography
+from help_tools import img_details
 import streamlit as st
 import cv2
 
@@ -13,11 +14,7 @@ st.set_page_config(
 
 main_option = st.selectbox(
     "Choose main category",
-    (
-        "Main page",
-        "3x3 transformations",
-        "Homography",
-    ),
+    ("Main page", "3x3 transformations", "Homography", "Image debug"),
 )
 
 
@@ -33,7 +30,10 @@ if main_option == "Main page":
     main_page()
 
 if main_option == "3x3 transformations":
-    transform3x3.main(image)
+    transformations_3x3.main(image)
 
 if main_option == "Homography":
     homography.main(image, image_room)
+
+if main_option == "Image debug":
+    img_details.main(image)
