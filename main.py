@@ -1,7 +1,5 @@
 # streamlit run main.py
-from transformations.transformations_3x3 import transformations_3x3
-from transformations.homography import homography
-from help_tools import img_details
+from solutions import blur, img_details, homography, transformations_3x3
 import streamlit as st
 import cv2
 
@@ -12,9 +10,9 @@ st.set_page_config(
 )
 
 
-main_option = st.selectbox(
+main_option = st.sidebar.selectbox(
     "Choose main category",
-    ("Main page", "3x3 transformations", "Homography", "Image debug"),
+    ("Home", "3x3 transformations", "Blur image", "Homography", "Image debug"),
 )
 
 
@@ -25,8 +23,9 @@ def main_page():
 
 image = cv2.cvtColor(cv2.imread("example_images/alien.jpg"), cv2.COLOR_BGR2RGB)
 image_room = cv2.cvtColor(cv2.imread("example_images/room.jpg"), cv2.COLOR_BGR2RGB)
+segmentation_mask = cv2.imread("example_images/segmentation_mask.png")
 
-if main_option == "Main page":
+if main_option == "Home":
     main_page()
 
 if main_option == "3x3 transformations":
@@ -37,3 +36,6 @@ if main_option == "Homography":
 
 if main_option == "Image debug":
     img_details.main(image)
+
+if main_option == "Blur image":
+    blur.main(image, segmentation_mask)

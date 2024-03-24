@@ -16,3 +16,4 @@ Currently available pages:
 1. image transformations (3x3 matrices)
 2. homography
 3. image debug (info about image and channels)
+4. blur
